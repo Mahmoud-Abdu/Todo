@@ -69,6 +69,14 @@ const Todo = () => {
     console.log(archivedTodo);
   };
 
+  const handleRetriveTodo =(index) => {
+    const archivedTodosCopy = [...archTodos];
+    const retrivedTodo = archivedTodosCopy[index];
+    setTodos([...todos, retrivedTodo]);
+    const archsAfterRetrived = archTodos.filter((_, i) => i !== index);
+    setArchTodos(archsAfterRetrived);
+  }
+
   return (
     <Box p={3}>
       <Typography variant="h4" gutterBottom>
@@ -114,7 +122,7 @@ const Todo = () => {
         handleArchiveTodo={handleArchiveTodo}
       />
 
-      <ArchiveList archTodos={archTodos} />
+      <ArchiveList archTodos={archTodos} retrive={handleRetriveTodo} />
 
       <Box mt={5}>
         <Button onClick={() => navigate("/weather")}>Current Weather</Button>

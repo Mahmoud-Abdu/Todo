@@ -4,10 +4,11 @@ import {
   Checkbox,
   FormControlLabel,
   Stack,
-  Typography
+  Typography,
+  Button
 } from "@mui/material";
 
-const ArchiveList = ({ archTodos }) => {
+const ArchiveList = ({ archTodos, retrive }) => {
   return (
     <>
       <Typography variant="h6" gutterBottom mt={4}>
@@ -33,6 +34,13 @@ const ArchiveList = ({ archTodos }) => {
                 control={<Checkbox disabled checked={todo.checked} />}
                 label="Checked"
               />
+                   <Button
+                variant="contained"
+                color="success"
+                onClick={() => retrive(index)}
+               >
+                Retrive
+              </Button>
             </Stack>
           </Box>
         ))}

@@ -30,7 +30,7 @@ const Weather = () => {
       try {
         // Make a request to OpenWeatherMap API
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${API_KEY}`
         );
 
         // Update the weather data state with the retrieved data
