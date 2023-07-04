@@ -1,17 +1,35 @@
 import Todo from "./components/Todo";
 import Weather from "./components/Weather";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import "./App.css";
+ import NightModeToggle from "./components/NighModeToggle";
+import { useState } from "react";
 
 function App() {
+  const [mode, setMode] = useState("light")
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
+
+  const toggleMode = () => {
+    setMode((currentMode) => currentMode == "dark" ? "light" : "dark")
+  } 
+
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Todo />} />
-      <Route path="/weather" element={<Weather />} />
-     </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <NightModeToggle mode={mode} toggleMode={toggleMode} />
+        <Routes>
+          <Route path="/" element={<Todo />} />
+          <Route path="/weather" element={<Weather />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
