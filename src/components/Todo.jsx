@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TodosList from "./TodosList";
 import ArchiveList from "./ArchiveList";
- import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   TextField,
@@ -23,6 +23,8 @@ const Todo = () => {
     finishedAt: "",
     archivedAt: "",
   });
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
   const navigate = useNavigate();
   const handleInputChange = (event) => {
     setNewTodo({
@@ -100,14 +102,10 @@ const Todo = () => {
           }
           label="Checked"
         />
-        <Button variant="contained" onClick={handleAddTodo}>
+        <Button variant="outlined" color="success" onClick={handleAddTodo}>
           Add Todo
         </Button>
       </Stack>
-
-      <Typography variant="h6" gutterBottom mt={4}>
-        Todos:
-      </Typography>
 
       <TodosList
         todos={todos}
@@ -116,9 +114,6 @@ const Todo = () => {
         handleArchiveTodo={handleArchiveTodo}
       />
 
-      <Typography variant="h6" gutterBottom mt={4}>
-        Archive:
-      </Typography>
       <ArchiveList archTodos={archTodos} />
 
       <Box mt={5}>

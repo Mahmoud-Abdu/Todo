@@ -1,11 +1,11 @@
+import { useState } from "react";
 import Todo from "./components/Todo";
 import Weather from "./components/Weather";
+import NightModeToggle from "./components/NighModeToggle";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
- import NightModeToggle from "./components/NighModeToggle";
-import { useState } from "react";
 
 function App() {
   const [mode, setMode] = useState("light")
@@ -16,7 +16,7 @@ function App() {
   });
 
   const toggleMode = () => {
-    setMode((currentMode) => currentMode == "dark" ? "light" : "dark")
+    setMode((currentMode) => currentMode === "dark" ? "light" : "dark")
   } 
 
   return (
