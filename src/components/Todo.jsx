@@ -61,6 +61,7 @@ const Todo = () => {
   const handleArchiveTodo = (index) => {
     const todosCopy = [...todos];
     const archivedTodo = todosCopy[index];
+    archivedTodo.archivedAt = new Date().toLocaleString();
     setArchTodos([...archTodos, archivedTodo]);
     handleDeleteTodo(index);
     console.log(archivedTodo);
