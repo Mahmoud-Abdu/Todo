@@ -11,7 +11,6 @@ const NightModeToggle = ({ mode, toggleMode }) => {
         bgcolor: "background.default",
         color: "text.primary",
         borderColor: "text.primary",
-
        }}
     >
       <Typography sx={{p:2}}>
